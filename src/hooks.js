@@ -1,3 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function useLoading() {}
+export function useLoading() {
+  const [isLoading, setIsLoading] = useState(false);
+  return [isLoading, setIsLoading];
+}
