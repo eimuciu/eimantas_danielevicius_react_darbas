@@ -5,6 +5,7 @@ const theme = {
     secondary: '#E2C391',
     third: '#9BBEC7',
     light: '#F6E27F',
+    error: 'darkred',
   },
 };
 
