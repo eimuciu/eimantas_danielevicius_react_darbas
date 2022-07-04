@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import { BigHeader } from '../atoms/Header';
+import { sendLogin } from '../../api';
 
 const initialValues = {
   email: '',
@@ -26,8 +27,12 @@ function LoginPage() {
     validationSchema: validation,
     validateOnBlur: true,
     validateOnChange: false,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const logindetails = await sendLogin(values);
+      if (logindetails.err) {
+        alert(logindetails.err);
+        return;
+      }
     },
   });
 
