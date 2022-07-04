@@ -11,7 +11,7 @@ function Input({ error, ...rest }) {
 }
 
 const Container = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 const StyledInput = styled.input`
@@ -20,7 +20,7 @@ const StyledInput = styled.input`
   outline: none;
   border: 1px solid
     ${(props) =>
-      props.error ? props.theme.colors.error : props.theme.colors.third};
+      props.error ? props.theme.colors.error : props.theme.colors.main};
   &:focus {
     border: 1px solid
       ${(props) =>
@@ -30,7 +30,7 @@ const StyledInput = styled.input`
 
 const Errmsg = styled.span`
   color: ${(props) => props.theme.colors.error};
-  font-size: 14px;
+  font-size: 13px;
 `;
 
 export default Input;

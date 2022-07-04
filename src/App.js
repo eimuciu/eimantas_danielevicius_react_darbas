@@ -24,7 +24,6 @@ function App() {
 }
 
 const ApplicationContainer = styled.div`
-  min-height: 100vh;
   padding: 50px 100px;
 `;
 

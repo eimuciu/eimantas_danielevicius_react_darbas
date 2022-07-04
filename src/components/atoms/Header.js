@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 export function BigHeader({ text }) {
-  return <StyledHeader>{text}</StyledHeader>;
+  return <StyledBigHeader>{text}</StyledBigHeader>;
 }
 
-const StyledHeader = styled.h1`
+const StyledBigHeader = styled.h1`
   font-size: 3rem;
   margin-bottom: 50px;
 `;

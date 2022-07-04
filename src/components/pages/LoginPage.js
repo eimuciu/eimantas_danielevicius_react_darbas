@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 import { BigHeader } from '../atoms/Header';
 
 const initialValues = {
@@ -10,13 +11,15 @@ const initialValues = {
   password: '',
 };
 
+const validation = Yup.object({
+  email: Yup.string().email().required(),
+  password: Yup.string().min(4).required(),
+});
+
 function LoginPage() {
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: Yup.object({
-      email: Yup.string().email().required(),
-      password: Yup.string().min(4).required(),
-    }),
+    validationSchema: validation,
     onSubmit: (values) => {
       console.log(values);
     },
@@ -28,24 +31,22 @@ function LoginPage() {
       <Form onSubmit={formik.handleSubmit}>
         <Input
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
           value={formik.values.email}
           name="email"
           type="text"
           placeholder="Your email"
-          error={formik.touched.email && formik.errors.email}
+          error={formik.errors.email}
         />
 
         <Input
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
           value={formik.values.password}
           name="password"
           type="password"
           placeholder="Your password"
-          error={formik.touched.password && formik.errors.password}
+          error={formik.errors.password}
         />
-        <button type="submit">Login</button>
+        <Button type="submit">Login</Button>
       </Form>
     </MainContainer>
   );
@@ -58,7 +59,7 @@ const MainContainer = styled.div`
 `;
 
 const Form = styled.form`
-  width: 50%;
+  width: 40%;
 `;
 
 export default LoginPage;
