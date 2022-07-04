@@ -40,7 +40,6 @@ function LoginPage({ makeMessage }) {
       if (logindetails.err) {
         makeMessage(logindetails.err, 'error');
         setIsLoading(false);
-        actions.resetForm();
         return;
       }
       login(logindetails.token);

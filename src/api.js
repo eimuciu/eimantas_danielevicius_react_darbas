@@ -1,4 +1,4 @@
-import { myFetch, BASE_URL } from './utils';
+import { myFetch, BASE_URL, myFetchAuth } from './utils';
 
 export async function sendLogin(credentials) {
   try {
@@ -22,5 +22,15 @@ export async function sendRegister(credentials) {
     return { success: false, msg: 'Registration failed' };
   } catch (error) {
     console.log('sendRegister error', error);
+  }
+}
+
+export async function getDataFromServer() {
+  const token = sessionStorage.getItem('tkn');
+  try {
+    const resp = await myFetchAuth(`${BASE_URL}/content/skills`, token);
+    return resp;
+  } catch (error) {
+    console.log('getDataFromServer error', error);
   }
 }
