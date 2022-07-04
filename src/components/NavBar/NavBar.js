@@ -36,7 +36,7 @@ function NavBar() {
             clickHandler={() => {
               handleLinkClick('home');
             }}
-            active={activeLink === 'home' && true}
+            active={activeLink === 'home' ? 'true' : ''}
             to={'/'}
           >
             {'Home'}
@@ -45,12 +45,14 @@ function NavBar() {
             clickHandler={() => {
               handleLinkClick('add');
             }}
-            active={activeLink === 'add' && true}
+            active={activeLink === 'add' ? 'true' : ''}
             to={'/add'}
           >
             {'Add  '}
           </Link>{' '}
-          <LogoutContainer onClick={logout}>Logout</LogoutContainer>
+          <LogoutContainer role={'button'} onClick={logout}>
+            Logout
+          </LogoutContainer>
         </>
       ) : (
         <>
@@ -58,7 +60,7 @@ function NavBar() {
             clickHandler={() => {
               handleLinkClick('login');
             }}
-            active={activeLink === 'login' && true}
+            active={activeLink === 'login' ? 'true' : ''}
             to={'/login'}
           >
             {'Login'}
@@ -67,7 +69,7 @@ function NavBar() {
             clickHandler={() => {
               handleLinkClick('register');
             }}
-            active={activeLink === 'register' && true}
+            active={activeLink === 'register' ? 'true' : ''}
             to={'/register'}
           >
             {'Register'}
