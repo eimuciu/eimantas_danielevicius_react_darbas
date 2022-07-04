@@ -24,7 +24,7 @@ const validation = Yup.object({
     .required('Password is required'),
 });
 
-function LoginPage() {
+function LoginPage({ makeMessage }) {
   const [isLoading, setIsLoading] = useLoading();
   const { login } = useAuthCtx();
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ function LoginPage() {
       setIsLoading(true);
       const logindetails = await sendLogin(values);
       if (logindetails.err) {
-        alert(logindetails.err);
+        makeMessage(logindetails.err, 'error');
         setIsLoading(false);
         return;
       }

@@ -5,8 +5,10 @@ import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import RegisterPage from './components/pages/RegisterPage';
 import AddPage from './components/pages/AddPage';
+import Modal from './components/atoms/Modal';
 import styled from 'styled-components';
 import { useAuthCtx } from './store/AuthProvider';
+import { useModal } from './hooks';
 
 function ProtectedRoute({ children }) {
   const { isUserLoggedIn } = useAuthCtx();
@@ -17,13 +19,18 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
+  const { makeMessage, message, showMessage, messageType } = useModal();
   return (
     <>
+      <Modal message={message} type={messageType} show={showMessage} />
       <NavBar />
       <ApplicationContainer>
         <Routes>
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login"
+            element={<LoginPage makeMessage={makeMessage} />}
+          />
           <Route
             path="/add"
             element={
@@ -46,7 +53,7 @@ function App() {
   );
 }
 
-const ApplicationContainer = styled.div`
+const ApplicationContainer = styled.main`
   padding: 50px 100px;
 `;
 
