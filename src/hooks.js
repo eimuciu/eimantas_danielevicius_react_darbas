@@ -25,3 +25,5 @@ export function useModal() {
 
   return { makeMessage, message, showMessage, messageType };
 }
+
+export function useFetch() {}

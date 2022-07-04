@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDataFromServer } from '../../api';
+import { BigHeader } from '../atoms/Header';
 import CardsList from '../organisms/CardsList';
 
 async function getData(setSkillsData) {
@@ -19,7 +20,10 @@ function HomePage() {
       {skillsData.length === 0 ? (
         <div>Waiting for content...</div>
       ) : (
-        <CardsList data={skillsData} />
+        <>
+          <BigHeader text={'Skills'} />
+          <CardsList data={skillsData} />
+        </>
       )}
     </>
   );

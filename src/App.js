@@ -38,7 +38,7 @@ function App() {
             path="/add"
             element={
               <ProtectedRoute>
-                <AddPage />
+                <AddPage makeMessage={makeMessage} />
               </ProtectedRoute>
             }
           />

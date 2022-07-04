@@ -34,3 +34,18 @@ export async function getDataFromServer() {
     console.log('getDataFromServer error', error);
   }
 }
+
+export async function postDataToServer(data) {
+  const token = sessionStorage.getItem('tkn');
+  try {
+    const resp = await myFetchAuth(
+      `${BASE_URL}/content/skills`,
+      token,
+      'POST',
+      data,
+    );
+    return resp;
+  } catch (error) {
+    console.log('getDataFromServer error', error);
+  }
+}
