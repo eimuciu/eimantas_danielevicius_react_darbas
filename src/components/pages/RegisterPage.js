@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import { BigHeader } from '../atoms/Header';
+import { sendRegister } from '../../api';
 
 const initialValues = {
   email: '',
@@ -24,15 +25,21 @@ const validation = Yup.object({
   ),
 });
 
-function RegisterPage() {
+function RegisterPage({ makeMessage }) {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
     validateOnBlur: true,
     validateOnChange: false,
-    onSubmit: (values) => {
+    onSubmit: async (values, actions) => {
       delete values.passwordConfirmation;
-      console.log(values);
+      const registerdetails = await sendRegister(values);
+      if (!registerdetails.success) {
+        makeMessage(registerdetails.msg, 'error');
+        return;
+      }
+      makeMessage(registerdetails.msg, 'success');
+      actions.resetForm();
     },
   });
 

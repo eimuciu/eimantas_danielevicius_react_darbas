@@ -1,5 +1,10 @@
 eimantas_danielevicius_react_darbas
 
+someing@email.com
+someing
+
+<!-- Shape -->
+
 {
 "email": "myemail@email.com",
 "password": "mypassword"
@@ -17,3 +22,7 @@ err: message
 msg: message
 token: abcdefg
 }
+
+<!-- Highlights -->
+
+API allows to register multiple identical credentials. However, only the first one is used for a successful login.

@@ -34,12 +34,13 @@ function LoginPage({ makeMessage }) {
     validationSchema: validation,
     validateOnBlur: true,
     validateOnChange: false,
-    onSubmit: async (values) => {
+    onSubmit: async (values, actions) => {
       setIsLoading(true);
       const logindetails = await sendLogin(values);
       if (logindetails.err) {
         makeMessage(logindetails.err, 'error');
         setIsLoading(false);
+        actions.resetForm();
         return;
       }
       login(logindetails.token);

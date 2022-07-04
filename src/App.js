@@ -26,7 +26,10 @@ function App() {
       <NavBar />
       <ApplicationContainer>
         <Routes>
-          <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/register"
+            element={<RegisterPage makeMessage={makeMessage} />}
+          />
           <Route
             path="/login"
             element={<LoginPage makeMessage={makeMessage} />}

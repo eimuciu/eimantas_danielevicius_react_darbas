@@ -13,7 +13,7 @@ export function useModal() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(false);
-    }, 2000);
+    }, 5000);
     return () => clearTimeout(timer);
   }, [showMessage]);
 
