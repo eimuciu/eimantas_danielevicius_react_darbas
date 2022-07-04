@@ -24,6 +24,8 @@ function LoginPage() {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
+    validateOnBlur: true,
+    validateOnChange: false,
     onSubmit: (values) => {
       console.log(values);
     },
@@ -35,20 +37,22 @@ function LoginPage() {
       <Form onSubmit={formik.handleSubmit}>
         <Input
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.email}
           name="email"
           type="text"
           placeholder="Your email"
-          error={formik.errors.email}
+          error={formik.touched.email && formik.errors.email}
         />
 
         <Input
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.password}
           name="password"
           type="password"
           placeholder="Your password"
-          error={formik.errors.password}
+          error={formik.touched.password && formik.errors.password}
         />
         <Button type="submit">Login</Button>
       </Form>

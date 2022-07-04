@@ -28,7 +28,10 @@ function RegisterPage() {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
+    validateOnBlur: true,
+    validateOnChange: false,
     onSubmit: (values) => {
+      delete values.passwordConfirmation;
       console.log(values);
     },
   });
@@ -39,27 +42,33 @@ function RegisterPage() {
       <Form onSubmit={formik.handleSubmit}>
         <Input
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.email}
           name="email"
           type="text"
           placeholder="Your email"
-          error={formik.errors.email}
+          error={formik.touched.email && formik.errors.email}
         />
         <Input
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.password}
           name="password"
           type="password"
           placeholder="Your password"
-          error={formik.errors.password}
+          error={formik.touched.password && formik.errors.password}
         />
         <Input
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.passwordConfirmation}
           name="passwordConfirmation"
           type="password"
           placeholder="Repeat password"
-          error={formik.errors.passwordConfirmation}
+          error={
+            formik.touched.passwordConfirmation &&
+            formik.errors.passwordConfirmation
+          }
         />
         <Button type="submit">Register</Button>
       </Form>
