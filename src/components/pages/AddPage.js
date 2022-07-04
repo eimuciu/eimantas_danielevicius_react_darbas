@@ -63,7 +63,7 @@ function AddPage({ makeMessage }) {
           placeholder="Description"
           error={formik.touched.description && formik.errors.description}
         />
-        <Button type="submit">{isLoading ? 'Loading...' : 'Create'}</Button>
+        <Button type="submit">{isLoading ? 'Waiting...' : 'Create'}</Button>
       </Form>
     </MainContainer>
   );

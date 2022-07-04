@@ -6,6 +6,7 @@ import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import { BigHeader } from '../atoms/Header';
 import { sendRegister } from '../../api';
+import { useLoading } from '../../hooks';
 
 const initialValues = {
   email: '',
@@ -26,19 +27,24 @@ const validation = Yup.object({
 });
 
 function RegisterPage({ makeMessage }) {
+  const [isLoading, setIsLoading] = useLoading();
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
     validateOnBlur: true,
     validateOnChange: false,
     onSubmit: async (values, actions) => {
+      setIsLoading(true);
       delete values.passwordConfirmation;
       const registerdetails = await sendRegister(values);
       if (!registerdetails.success) {
         makeMessage(registerdetails.msg, 'error');
+        setIsLoading(false);
         return;
       }
       makeMessage(registerdetails.msg, 'success');
+      setIsLoading(false);
       actions.resetForm();
     },
   });
@@ -77,7 +83,7 @@ function RegisterPage({ makeMessage }) {
             formik.errors.passwordConfirmation
           }
         />
-        <Button type="submit">Register</Button>
+        <Button type="submit">{isLoading ? 'Waiting...' : 'Register'}</Button>
       </Form>
     </MainContainer>
   );

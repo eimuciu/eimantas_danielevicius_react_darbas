@@ -34,7 +34,7 @@ function LoginPage({ makeMessage }) {
     validationSchema: validation,
     validateOnBlur: true,
     validateOnChange: false,
-    onSubmit: async (values, actions) => {
+    onSubmit: async (values) => {
       setIsLoading(true);
       const logindetails = await sendLogin(values);
       if (logindetails.err) {
@@ -71,7 +71,7 @@ function LoginPage({ makeMessage }) {
           placeholder="Your password"
           error={formik.touched.password && formik.errors.password}
         />
-        <Button type="submit">{isLoading ? 'Loading...' : 'Login'}</Button>
+        <Button type="submit">{isLoading ? 'Waiting...' : 'Login'}</Button>
       </Form>
     </MainContainer>
   );
