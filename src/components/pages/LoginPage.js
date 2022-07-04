@@ -12,8 +12,12 @@ const initialValues = {
 };
 
 const validation = Yup.object({
-  email: Yup.string().email().required(),
-  password: Yup.string().min(4).required(),
+  email: Yup.string()
+    .email('Must be a valid email')
+    .required('Email is required'),
+  password: Yup.string()
+    .min(4, 'Password must be at least 4 characters')
+    .required('Password is required'),
 });
 
 function LoginPage() {
