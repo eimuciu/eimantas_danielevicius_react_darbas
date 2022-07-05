@@ -54,12 +54,19 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ApplicationContainer>
+      <Footer>Copyright &copy; 2022</Footer>
     </>
   );
 }
 
 const ApplicationContainer = styled.main`
   padding: 50px 100px;
+  min-height: calc(100vh - 100px);
+`;
+
+const Footer = styled.footer`
+  padding: 10px;
+  text-align: center;
 `;
 
 export default App;
