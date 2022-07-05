@@ -51,7 +51,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="*"
+            element={
+              <ProtectedRoute>
+                <NotFoundPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </ApplicationContainer>
       <Footer>Copyright &copy; 2022</Footer>
