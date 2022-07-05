@@ -4,6 +4,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import RegisterPage from './components/pages/RegisterPage';
+import NotFoundPage from './components/pages/NotFoundPage';
 import AddPage from './components/pages/AddPage';
 import Modal from './components/atoms/Modal';
 import styled from 'styled-components';
@@ -50,6 +51,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ApplicationContainer>
     </>
