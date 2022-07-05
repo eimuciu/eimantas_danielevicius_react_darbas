@@ -85,6 +85,12 @@ const MainContainer = styled.div`
 
 const Form = styled.form`
   width: 40%;
+  @media (max-width: 1024px) {
+    width: 50%;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export default LoginPage;

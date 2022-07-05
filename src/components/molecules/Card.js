@@ -14,6 +14,7 @@ const MainContainer = styled.div`
   box-shadow: 4px 5px 12px lightgray;
   border-radius: 3px;
   padding: 20px;
+  flex-grow: 1;
 `;
 
 export default Card;

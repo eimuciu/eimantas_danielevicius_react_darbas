@@ -17,8 +17,8 @@ function CardsList({ data }) {
 }
 
 const MainContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-flow: row wrap;
   gap: 10px;
 `;
 
