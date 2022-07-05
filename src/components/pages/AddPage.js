@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
+import TextArea from '../atoms/TextArea';
 import { BigHeader } from '../atoms/Header';
 import Button from '../atoms/Button';
 import { useLoading } from '../../hooks';
@@ -54,7 +55,7 @@ function AddPage({ makeMessage }) {
           error={formik.touched.title && formik.errors.title}
         />
 
-        <Input
+        <TextArea
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.description}

@@ -46,6 +46,6 @@ export async function postDataToServer(data) {
     );
     return resp;
   } catch (error) {
-    console.log('getDataFromServer error', error);
+    console.log('postDataToServer error', error);
   }
 }
